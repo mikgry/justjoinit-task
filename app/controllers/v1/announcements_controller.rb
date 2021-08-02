@@ -7,7 +7,7 @@ module V1
     end
 
     def index
-      announcements = Announcement.page(params[:page])
+      announcements = Announcement.ransack(params[:q]).result.page(params[:page])
       render json: announcements
     end
 
