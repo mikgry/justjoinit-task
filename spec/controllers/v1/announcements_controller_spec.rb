@@ -25,12 +25,11 @@ describe V1::AnnouncementsController do
         "data" => {
           "attributes" => {
             "description" => description,
-            "photo_url" => Rails.application.routes.url_helpers.rails_blob_url(announcement.photo),
-            "price_cents" => price_cents,
+            "photo-url" => Rails.application.routes.url_helpers.rails_blob_url(announcement.photo),
+            "price-cents" => price_cents,
             "title" => title},
             "id" => announcement.id.to_s,
-            "type" => "announcements"},
-       "jsonapi" => {"version"=>"1.0"}
+            "type" => "announcements"}
       )
     end
 
@@ -54,11 +53,7 @@ describe V1::AnnouncementsController do
         subject
 
         expect(JSON.parse(response.body)).to eql(
-         { "errors" =>
-              [{ "title"=>"Invalid title", "detail"=>"Title can't be blank",
-                "source"=>{}}],
-            "jsonapi"=>{"version"=>"1.0"}
-          }
+          { "error" => {"title"=>["can't be blank"]} }
         )
       end
     end
@@ -75,11 +70,7 @@ describe V1::AnnouncementsController do
         subject
 
         expect(JSON.parse(response.body)).to eql(
-         { "errors" =>
-              [{ "title"=>"Invalid description", "detail"=>"Description can't be blank",
-                "source"=>{}}],
-            "jsonapi"=>{"version"=>"1.0"}
-          }
+          { "error" => {"description"=>["can't be blank"]} }
         )
       end
     end
@@ -96,11 +87,7 @@ describe V1::AnnouncementsController do
         subject
 
         expect(JSON.parse(response.body)).to eql(
-         { "errors" =>
-              [{ "title"=>"Invalid price_cents", "detail"=>"Price cents must be greater than 0",
-                "source"=>{}}],
-            "jsonapi"=>{"version"=>"1.0"}
-          }
+         { "error" => {"price_cents"=>["must be greater than 0"]} }
         )
       end
     end

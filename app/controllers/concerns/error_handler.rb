@@ -14,6 +14,6 @@ module ErrorHandler
   private
 
   def render_error(code, message)
-    render jsonapi_errors: message, status: code
+    render json: { error: message }, status: code
   end
 end

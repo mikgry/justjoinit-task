@@ -3,7 +3,7 @@ module V1
     def create
       announcement = Announcement.create!(create_params)
 
-      render jsonapi: announcement, status: 201
+      render json: announcement, status: 201
     end
 
     private
