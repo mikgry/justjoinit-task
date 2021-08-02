@@ -6,6 +6,11 @@ module V1
       render json: announcement, status: 201
     end
 
+    def index
+      announcements = Announcement.all
+      render json: announcements
+    end
+
     private
 
     def create_params

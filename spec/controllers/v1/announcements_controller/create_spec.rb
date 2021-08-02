@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe V1::AnnouncementsController do
-  describe 'POST /v1/announcements' do
+  describe '#create' do
     subject { post :create, params: params }
 
     let(:params) do
