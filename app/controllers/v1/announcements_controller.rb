@@ -11,6 +11,11 @@ module V1
       render json: announcements
     end
 
+    def show
+      announcement = Announcement.find(params[:id])
+      render json: announcement
+    end
+
     private
 
     def create_params
