@@ -30,7 +30,13 @@ describe V1::AnnouncementsController do
             },
             "id"=>announcement_2.id.to_s,
             "type"=>"announcements"}
-        ]
+        ],
+         "links"=>{
+            "self"=>"http://test.host/v1/announcements?page%5Bnumber%5D=1&page%5Bsize%5D=25",
+            "first"=>"http://test.host/v1/announcements?page%5Bnumber%5D=1&page%5Bsize%5D=25",
+            "prev"=>nil, "next"=>nil,
+            "last"=>"http://test.host/v1/announcements?page%5Bnumber%5D=1&page%5Bsize%5D=25"
+        }
       )
     end
   end
